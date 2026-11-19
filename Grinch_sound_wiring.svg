@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1240" viewBox="0 0 1400 1240" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="1400" height="1240" fill="#ffffff"/>
+  <style>
+    .t{font-size:15px;fill:#222}
+    .s{font-size:13px;fill:#444}
+    .h{font-size:18px;font-weight:700;fill:#111}
+    .pin{font-size:15px;font-weight:600;fill:#111}
+    .grey{font-size:13px;fill:#888}
+    .w{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .box{fill:#f4f6f8;stroke:#333;stroke-width:2;rx:10}
+  </style>
+
+  <text x="40" y="45" font-size="26" font-weight="700" fill="#111">Grinch sound wiring: everything inside the head</text>
+  <text x="40" y="72" class="s">New Grinch, 2026-11-15. Dots = joined. Wires that cross without a dot are NOT connected. Power comes only from the micro-USB cable.</text>
+
+  <!-- ===== ESP32 ===== -->
+  <rect x="300" y="100" width="220" height="770" class="box" fill="#e8f0fb"/>
+  <text x="410" y="130" text-anchor="middle" class="h">ESP32-S3</text>
+  <text x="410" y="150" text-anchor="middle" class="s">DevKitC-1</text>
+  <g class="pin" text-anchor="end">
+    <text x="508" y="175">GPIO 17</text>
+    <text x="508" y="215">GPIO 18</text>
+    <text x="508" y="255">GPIO 16</text>
+    <text x="508" y="305" fill="#c1121f">5V</text>
+    <text x="508" y="345">GND</text>
+    <text x="508" y="575">GPIO 4</text>
+    <text x="508" y="685">GPIO 5</text>
+    <text x="508" y="775">GPIO 6</text>
+  </g>
+  <text x="315" y="430" class="grey">Already wired to the screen</text>
+  <text x="315" y="450" class="grey">(leave as is):</text>
+  <text x="315" y="475" class="grey">GPIO 7 BL · 8 RST · 9 DC</text>
+  <text x="315" y="495" class="grey">10 CS · 11 MOSI · 12 SCLK</text>
+  <text x="315" y="515" class="grey">13 MISO · 3V3 · GND</text>
+  <rect x="385" y="870" width="50" height="16" fill="#999" rx="3"/>
+  <path d="M410 886 V925" class="w" stroke="#555"/>
+  <text x="410" y="945" text-anchor="middle" class="t">micro-USB → 5 V, 2 A charger</text>
+
+  <!-- ===== wires ===== -->
+  <!-- 5V bus -->
+  <path d="M520 300 H730 M730 130 V490 M730 130 H900 M730 490 H900" class="w" stroke="#d62828"/>
+  <!-- GND bus -->
+  <path d="M520 340 H900 M760 340 V810 M760 530 H900 M760 720 H900 M760 810 H900" class="w" stroke="#222"/>
+  <!-- GPIO17 -> 510R -> DF RX -->
+  <path d="M520 170 H795 l5 -10 l10 20 l10 -20 l10 20 l10 -20 l10 20 l5 -10 H900" class="w" stroke="#1f6feb"/>
+  <text x="828" y="152" text-anchor="middle" class="pin" fill="#1f6feb">510 Ω</text>
+  <!-- GPIO18 <- DF TX -->
+  <path d="M520 210 H900" class="w" stroke="#f08c00"/>
+  <!-- GPIO16 <- BUSY (optional) -->
+  <path d="M520 250 H900" class="w" stroke="#868e96" stroke-dasharray="10 8"/>
+  <!-- GPIO4 <- radar OUT -->
+  <path d="M520 570 H900" class="w" stroke="#7b2cbf"/>
+  <!-- GPIO5 <- switch NO -->
+  <path d="M520 680 H900" class="w" stroke="#2b8a3e"/>
+  <!-- GPIO6 -> LED+ -->
+  <path d="M520 770 H900" class="w" stroke="#94d82d"/>
+  <!-- junction dots -->
+  <g fill="#d62828"><circle cx="730" cy="300" r="7"/><circle cx="730" cy="130" r="7"/><circle cx="730" cy="490" r="7"/></g>
+  <g fill="#222"><circle cx="760" cy="340" r="7"/><circle cx="760" cy="530" r="7"/><circle cx="760" cy="720" r="7"/><circle cx="760" cy="810" r="7"/></g>
+  <text x="600" y="292" class="s" fill="#c1121f">5V splice</text>
+  <text x="600" y="362" class="s">GND splice</text>
+
+  <!-- ===== DFPlayer ===== -->
+  <text x="990" y="92" text-anchor="middle" class="h">DFPlayer Mini (YX5200)</text>
+  <rect x="900" y="100" width="180" height="260" class="box" fill="#e7ecff"/>
+  <g class="pin">
+    <text x="912" y="135" fill="#c1121f">VCC</text>
+    <text x="912" y="175">RX</text>
+    <text x="912" y="215">TX</text>
+    <text x="912" y="255" fill="#666">BUSY</text>
+    <text x="912" y="345">GND</text>
+  </g>
+  <g class="pin" text-anchor="end">
+    <text x="1068" y="205">SPK_1</text>
+    <text x="1068" y="265">SPK_2</text>
+  </g>
+  <text x="990" y="310" text-anchor="middle" class="s">microSD card in here</text>
+  <path d="M1080 200 H1180 M1080 260 H1180" class="w" stroke="#495057"/>
+  <!-- speaker symbol -->
+  <rect x="1180" y="205" width="22" height="50" fill="#333"/>
+  <path d="M1202 205 L1245 180 V280 L1202 255 Z" fill="#555"/>
+  <text x="1260" y="215" class="pin">Speaker</text>
+  <text x="1260" y="235" class="s">4 Ω 3 W</text>
+  <text x="1110" y="300" class="s" fill="#c1121f">Never connect a speaker</text>
+  <text x="1110" y="318" class="s" fill="#c1121f">wire to GND. Polarity doesn't matter.</text>
+  <text x="930" y="395" class="s" fill="#666">BUSY (optional): tells the code a sound is playing</text>
+
+  <!-- ===== LD2410C ===== -->
+  <text x="990" y="452" text-anchor="middle" class="h">HLK-LD2410C radar</text>
+  <rect x="900" y="460" width="180" height="140" class="box" fill="#efe6fb"/>
+  <g class="pin">
+    <text x="912" y="495" fill="#c1121f">VCC</text>
+    <text x="912" y="535">GND</text>
+    <text x="912" y="575">OUT</text>
+  </g>
+  <text x="1068" y="535" text-anchor="end" class="s">TX, RX: not used</text>
+  <text x="1100" y="495" class="s">Gold antenna side faces the</text>
+  <text x="1100" y="513" class="s">forehead, pins face into the head.</text>
+  <text x="1100" y="545" class="s">Set the range in the free</text>
+  <text x="1100" y="563" class="s">HLKRadarTool phone app.</text>
+
+  <!-- ===== Button ===== -->
+  <text x="990" y="642" text-anchor="middle" class="h">Green 12 mm button</text>
+  <rect x="900" y="650" width="180" height="190" class="box" fill="#e9f8e9"/>
+  <g class="pin">
+    <text x="912" y="685">Switch (blue)</text>
+    <text x="912" y="725">Switch (blue)</text>
+    <text x="912" y="775">LED + (red)</text>
+    <text x="912" y="815">LED − (black)</text>
+  </g>
+  <text x="1100" y="685" class="s">Press = motion mode on/off.</text>
+  <text x="1100" y="703" class="s">Green ring lights while it's on.</text>
+  <text x="1100" y="740" class="s">The ring lights straight from the 3.3 V</text>
+  <text x="1100" y="758" class="s">pin (tested): no transistor needed.</text>
+  <text x="1100" y="795" class="s">Press during a sound = stop it.</text>
+  <text x="1100" y="813" class="s">The two blue wires are interchangeable.</text>
+
+  <!-- ===== connection list ===== -->
+  <rect x="40" y="990" width="860" height="230" fill="#fafafa" stroke="#ccc" rx="8"/>
+  <text x="60" y="1020" class="h">Connection list</text>
+  <g class="t">
+    <text x="60" y="1048"><tspan fill="#c1121f" font-weight="700">ESP32 5V</tspan> → DFPlayer VCC + radar VCC (3-port Wago 221-413)</text>
+    <text x="60" y="1072"><tspan font-weight="700">ESP32 GND</tspan> → DFPlayer GND, radar GND, button blue, button black (5-port Wago 221-415)</text>
+    <text x="60" y="1096"><tspan fill="#1f6feb" font-weight="700">GPIO 17</tspan> → 510 Ω resistor → DFPlayer RX   |   <tspan fill="#f08c00" font-weight="700">GPIO 18</tspan> ← DFPlayer TX</text>
+    <text x="60" y="1120"><tspan fill="#7b2cbf" font-weight="700">GPIO 4</tspan> ← radar OUT   |   <tspan fill="#2b8a3e" font-weight="700">GPIO 5</tspan> ← button blue   |   <tspan fill="#5c940d" font-weight="700">GPIO 6</tspan> → button red (LED +)</text>
+    <text x="60" y="1144"><tspan fill="#666" font-weight="700">GPIO 16</tspan> ← DFPlayer BUSY (optional)   |   DFPlayer SPK_1 / SPK_2 → speaker</text>
+    <text x="60" y="1176" class="s">Only the speaker is on the removable cap: unplug its two wires to take the cap off. Button and radar stay in the head.</text>
+    <text x="60" y="1198" class="s">Join the 5V and GND wires with Wago 221 lever connectors (no soldering). The 510 Ω goes in line on the RX wire.</text>
+  </g>
+
+  <!-- ===== DFPlayer real pin order ===== -->
+  <rect x="930" y="890" width="430" height="330" fill="#fafafa" stroke="#ccc" rx="8"/>
+  <text x="1145" y="918" text-anchor="middle" class="h">DFPlayer: real pin order</text>
+  <text x="1145" y="938" text-anchor="middle" class="s">Top view. Check the silkscreen: pin 1 (VCC) is marked.</text>
+  <rect x="1065" y="950" width="160" height="255" fill="#2a4bd7" rx="6"/>
+  <text x="1145" y="1080" text-anchor="middle" font-size="13" fill="#fff">DFPlayer</text>
+  <g font-size="13" font-weight="600">
+    <g fill="#111" text-anchor="end">
+      <text x="1050" y="975" fill="#c1121f">VCC</text><text x="1050" y="1003" fill="#1f6feb">RX</text><text x="1050" y="1031" fill="#f08c00">TX</text>
+      <text x="1050" y="1059" fill="#aaa">DAC_R</text><text x="1050" y="1087" fill="#aaa">DAC_L</text><text x="1050" y="1115">SPK_1</text>
+      <text x="1050" y="1143">GND</text><text x="1050" y="1171">SPK_2</text>
+    </g>
+    <g fill="#111">
+      <text x="1240" y="975" fill="#666">BUSY</text><text x="1240" y="1003" fill="#aaa">USB−</text><text x="1240" y="1031" fill="#aaa">USB+</text>
+      <text x="1240" y="1059" fill="#aaa">ADKEY_2</text><text x="1240" y="1087" fill="#aaa">ADKEY_1</text><text x="1240" y="1115" fill="#aaa">IO_2</text>
+      <text x="1240" y="1143" fill="#aaa">GND</text><text x="1240" y="1171" fill="#aaa">IO_1</text>
+    </g>
+  </g>
+  <g fill="#ffd43b">
+    <circle cx="1075" cy="970" r="5"/><circle cx="1075" cy="998" r="5"/><circle cx="1075" cy="1026" r="5"/><circle cx="1075" cy="1054" r="5"/>
+    <circle cx="1075" cy="1082" r="5"/><circle cx="1075" cy="1110" r="5"/><circle cx="1075" cy="1138" r="5"/><circle cx="1075" cy="1166" r="5"/>
+    <circle cx="1215" cy="970" r="5"/><circle cx="1215" cy="998" r="5"/><circle cx="1215" cy="1026" r="5"/><circle cx="1215" cy="1054" r="5"/>
+    <circle cx="1215" cy="1082" r="5"/><circle cx="1215" cy="1110" r="5"/><circle cx="1215" cy="1138" r="5"/><circle cx="1215" cy="1166" r="5"/>
+  </g>
+  <text x="1145" y="1198" text-anchor="middle" font-size="12" fill="#fff">Grey pins: not used</text>
+</svg>
